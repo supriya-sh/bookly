@@ -1,13 +1,22 @@
 :root {
-  --COLORTHEME1: #AAB99A;
+  --PLUMCOLOR: #672c60;
+  --OLIVECOLOR: #556B2F;
+}
+body{
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.735), #447664);
 }
 .header {
-  font-size: 40px;
+  font-size: 60px;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: bold;
   padding: 3%;
   text-align: center;
-  background-color: var(--COLORTHEME1);
+  margin: 0 auto;
+  background-color: var(--PLUMCOLOR);
+  border-radius: 100%;
+  width: 20%;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
   color: white;
 }
 .header:hover{
@@ -19,8 +28,8 @@
   left: 0;
   bottom: -4px;
   width: 100%;
-  height: 2px;
-  background-color: #700707;
+  height: 3px;
+  background-color: var(--OLIVECOLOR);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.8s ease;
