@@ -3,6 +3,9 @@
   --OLIVECOLOR: #556B2F;
 }
 body{
+  margin: 0%;
+  width: 100%;
+  overflow-x: hidden;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.735), #447664);
 }
 .header {
@@ -39,4 +42,25 @@ body{
 }
 .header:hover::after {
   transform: scaleX(1);
+}
+.booklists {
+  display: flex;
+  width: max-content;
+  animation: rowscroll 60s linear infinite;
+}
+@keyframes rowscroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+.rowflow {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-width: 300px;
+  padding: 15px;
 }
