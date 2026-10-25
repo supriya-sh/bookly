@@ -1,23 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap');
 :root {
-  --PLUMCOLOR: #672c60;
-  --OLIVECOLOR: #556B2F;
+  --BACKINBLACK: #16131F;
+  --MOOUNTAINHEATHER: #F0D9E4;
+  --DECANTING: #C1A0A3;
+  --FUNKIEFRIDAY: #4A3F4B;
+  --MOONSCAPE: #806C79;
 }
 body{
   margin: 0%;
   width: 100%;
   overflow-x: hidden;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.735), #447664);
+  background: radial-gradient(circle, var(--MOOUNTAINHEATHER), var(--DECANTING), var(--MOONSCAPE));
 }
 .header {
   font-size: 60px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-family: "Luckiest Guy", cursive;
   font-weight: bold;
-  padding: 3%;
+  padding: 2%;
   text-align: center;
-  margin: 0 auto;
-  background-color: var(--PLUMCOLOR);
-  border-radius: 100%;
-  width: 20%;
+  margin: 2 auto;
+  margin-bottom: 100px;
+  background-color: var(--MOONSCAPE);
+  /* border-radius: 100%; */
+  /* width: 20%; */
   -webkit-text-stroke-width: 2px;
   -webkit-text-stroke-color: black;
   color: white;
@@ -32,7 +38,7 @@ body{
   bottom: -4px;
   width: 100%;
   height: 3px;
-  background-color: var(--OLIVECOLOR);
+  background-color: rgb(87, 27, 27);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.8s ease;
@@ -40,14 +46,24 @@ body{
 .header:hover {
   transform: translateY(-3px);
 }
-.header:hover::after {
+.header:hover::after{
   transform: scaleX(1);
+}
+.backgroundbookie{
+  width: 100%;
+  overflow: hidden;
+  background-image: radial-gradient(circle, var(--MOOUNTAINHEATHER), var(--FUNKIEFRIDAY));
+  padding: 40px 0;
+  box-sizing: border-box;
 }
 .booklists {
   display: flex;
+  animation: rowscroll 40s linear infinite;
+  align-items: center;
+  gap: 35px;
   width: max-content;
-  animation: rowscroll 60s linear infinite;
 }
+
 @keyframes rowscroll {
   from {
     transform: translateX(0);
@@ -59,8 +75,40 @@ body{
 }
 .rowflow {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 15px;
-  min-width: 300px;
-  padding: 15px;
+  flex: 0 0 160px;
+  gap: 10px;
+  text-align: center;
+  padding: 30px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 2%;
+  height: 310px;
+  box-sizing: border-box;
+}
+.rowflow:hover{
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.rowflow img {
+  width: 110px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.rowflow h3 {
+  width: 110px;
+  margin: 0;
+  text-align: center;
+  font-size: 16px;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.rowflow p {
+  width: 110px;
+  margin: 0;
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.5;
 }

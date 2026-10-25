@@ -1,6 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-
+function options(){
+  return(
+    
+  )
+}
 function App() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,23 +34,22 @@ function App() {
 return (
   <>
     <div className="header">Bookly</div>
+    <div className="backgroundbookie">
+      <div className="booklists">
+        {books.map((book) => (
+          <div className="rowflow" key={book.key}>
+            <img
+              src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
+              alt={book.title}
+            />
 
-    <div className="booklists">
-      {books.map((book) => (
-        <div className="rowflow" key={book.key}>
-          <img
-            src={`https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg`}
-            alt={book.title}
-          />
-
-          <div>
-            <h3>{book.title}</h3>
-            <p>
-              First published: {book.first_publish_year || "Unknown"}
-            </p>
+            <div>
+              <h3>{book.title}</h3>
+              <p>First published: {book.first_publish_year || "Unknown"}</p>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   </>
 );
