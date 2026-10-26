@@ -10,11 +10,9 @@ function App() {
         const response = await fetch(
           "https://openlibrary.org/search.json?q=fiction&fields=key,title,author_name,cover_i,first_publish_year&limit=12"
         );
-
         if (!response.ok) {
           throw new Error("Couldn't fetch books");
         }
-
         const data = await response.json();
         setBooks(data.docs);
       } catch (err) {
@@ -33,15 +31,15 @@ function App() {
             <span className="sidebarsymbol">合</span>
             <span className="labels">Home</span>
           </a>
-          <a href="#currently-reading" className="sidebarlinkyy">
+          <a href="#reading" className="sidebarlinkyy">
             <span className="sidebarsymbol">♟</span>
             <span className="labels">Reading...</span>
           </a>
-          <a href="#want-to-read" className="sidebarlinkyy">
+          <a href="#interested" className="sidebarlinkyy">
             <span className="sidebarsymbol">♡</span>
             <span className="labels">Interested in...</span>
           </a>
-          <a href="#completed" className="sidebarlinkyy">
+          <a href="#finished" className="sidebarlinkyy">
             <span className="sidebarsymbol">✓</span>
             <span className="labels">Finished</span>
           </a>

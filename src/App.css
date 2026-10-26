@@ -65,6 +65,7 @@ body{
   flex-direction: column;
   gap: 12px;
   width: 220px;
+  padding-top: 44px;
 }
 .sidebarlinkyy{
   display: flex;
@@ -72,8 +73,8 @@ body{
   gap: 18px;
   width: 220px;
   min-height: 48px;
-  padding: 0 10px;
-  border-radius: 10px;
+  padding: 0 15px;
+  border-radius: 18px;
   color: var(--MOOUNTAINHEATHER);
   text-decoration: none;
   white-space: nowrap;
@@ -84,7 +85,7 @@ body{
 }
 .sidebarsymbol{
   flex: 0 0 30px;
-  font-size: 24px;
+  font-size: 27px;
   text-align: center;
 }
 .labels{
@@ -150,7 +151,7 @@ body{
 .backgroundbookie{
   width: 100%;
   overflow: hidden;
-  background-image: radial-gradient(circle, var(--MOOUNTAINHEATHER), var(--FUNKIEFRIDAY));
+  background-image: radial-gradient(circle, var(--DECANTING), var(--BACKINBLACK));
   padding: 40px 0;
 }
 .booklists{
@@ -183,7 +184,7 @@ body{
   padding: 15px;
   border: 1px solid var(--BACKINBLACK);
   border-radius: 10px;
-  background-color: rgba(240, 217, 228, 0.35);
+  background-color: var(--MOOUNTAINHEATHER);
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
