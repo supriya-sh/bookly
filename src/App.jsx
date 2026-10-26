@@ -5,6 +5,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [err, setErr] = useState("");
   const [readingBooks, setreadingBooks]= useState(null);
+  const [storyText, setstoryText]= useState("");
+  const [loadingBook, setloadingBook]= useState(false);
   useEffect(() => {
     async function getbooks() {
       try {
@@ -23,7 +25,32 @@ function App() {
     }
     getbooks();
   }, []);
+
+  async function readBooks(book) {
+    setreadingBooks(book);
+    setstoryText("");
+    setloadingBook(true);
+    try{
+      const fetchurl= book.formats?.["text/plain"];
+      if (!fetchurl){
+        throw new Error ("Couldn't load book. Please try again...");
+      }
+      const response= await fetch(fetchurl);
+      if (!response.ok){
+        throw new Error ("Couldn't load book. Please try again...");
+      }
+      const text= await response.text();
+    setBookText(text);
+    } catch (error) {
+      setBookText("Sorry, content could not be loaded.");
+    } finally {
+      setReaderLoading(false);
+    }
+  }
+
+
   return (
+  <>
     <div className="appsiee">
       <aside className="sidebar">
         <nav className="navigationbar">
@@ -65,19 +92,34 @@ function App() {
               )}
 
                   <div className="detailings">
-                    <h3 className="readinghere"><u>Read here</u></h3>
                     <h3 className="titles">{book.title}</h3>
                     <p className="booksummaryy">
                       {book.summaries?.[0] || " "}
                     </p>
+                  <button className="readinghere" onClick={()=> readBooks(book)}><u>Read here</u></button>  
                   </div>
                 </article>
               ))}
             </div>
           )}
         </section>
-      </main>
+      {readingBooks && (
+      <section className="reader">
+        <button className="read-button" onClick={() => setReadingBooks(null)}>
+          ← Back
+        </button>
+        <h2>{readingBooks.title}</h2>
+        {loadingBook ? (
+          <p>Book is opening...</p>
+        ) : (
+          <pre className="reader-text">{storyText}</pre>
+        )}
+      </section>
+      )}
+    </main>
     </div>
-  );
-}
+  </>
+)};
+
+
 export default App;
