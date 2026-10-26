@@ -37,7 +37,7 @@ body{
   padding: 20px 10px;
   flex-shrink: 0;
   background: transparent;
-  color: var(--MOONSCAPE);
+  color: var(--MOOUNTAINHEATHER);
   z-index: 1000;
 }
 .sidebar::before{
@@ -157,9 +157,9 @@ body{
 .booklists{
   display: flex;
   align-items: center;
-  gap: 35px;
+  gap: 45px;
   width: max-content;
-  animation: rowscroll 40s linear infinite;
+  animation: rowscroll 120s linear infinite;
 }
 .booklists:hover{
   animation-play-state: paused;
@@ -177,9 +177,9 @@ body{
   flex-direction: column;
   align-items: center;
   flex: 0 0 180px;
-  width: 180px;
-  height: 310px;
-  gap: 10px;
+  width: 240px;
+  height: 380px;
+  gap: 20px;
   text-align: center;
   padding: 15px;
   border: 1px solid var(--BACKINBLACK);
@@ -192,6 +192,9 @@ body{
   cursor: pointer;
   transform: scale(1.06);
   box-shadow: 0 8px 20px rgba(101, 58, 229, 0.384);
+  height: auto;
+  width: auto;
+  z-index: 5;
 }
 .rowflow img{
   display: block;
@@ -226,7 +229,7 @@ body{
 .titles{
   width: 100%;
   margin: 0 0 5px;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
@@ -240,4 +243,16 @@ body{
   color: var(--BACKINBLACK);
   font-size: 18px;
   padding: 20px;
+}
+.booksummaryy{
+  font-size: 12px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.rowflow:hover .booksummaryy{
+  display: block;
+  -webkit-line-clamp: unset;
+  overflow: visible;
 }
