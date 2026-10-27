@@ -227,7 +227,7 @@ body{
 .readinghere{
   margin: 0 0 5px;
   font-size: 10px;
-  color: var(--MOOUNTAINHEATHER);
+  color: whitesmoke;
   background-color: var(--FUNKIEFRIDAY);
   border-radius: 30px;
 }
@@ -270,16 +270,16 @@ body{
   width: min(900px, 92%);
   margin: 45px auto;
   padding: 35px 45px;
-  background: #FFF8E9;
+  background: whitesmoke;
   color: #30251F;
   border: 1px solid #C1A0A3;
-  border-radius: 12px;
   box-shadow: 0 8px 25px rgba(22, 19, 31, 0.2);
   box-sizing: border-box;
   animation: readerAppear 0.4s ease;
 }
 .reader h2 {
-  font-family: "Englebert", cursive;
+  font-family: 'Times New Roman', Times, serif;
+  color: black;
   font-size: 34px;
   text-align: center;
   line-height: 1.3;
@@ -288,11 +288,11 @@ body{
   border-bottom: 1px solid #C1A0A3;
   overflow-wrap: anywhere;
 }
-.read-button {
+.readbutt {
   padding: 9px 17px;
-  border: 1px solid #806C79;
+  border: var(--MOOUNTAINHEATHER);
   border-radius: 20px;
-  background: #806C79;
+  background: var(--MOONSCAPE);
   color: #FFF8E9;
   font-family: "Englebert", cursive;
   font-size: 16px;
@@ -322,4 +322,20 @@ body{
     opacity: 1;
     transform: translateY(0);
   }
+}
+.heartbutt {
+  border: none;
+  background: transparent;
+  color: var(--BACKINBLACK);
+  font-size: 27px;
+  cursor: pointer;
+  padding: 5px 10px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+.heartbutt:hover {
+  color: #62222e;
+  transform: scale(1.2);
+}
+.heartbutt.hearted{
+  color: #62222e;
 }
