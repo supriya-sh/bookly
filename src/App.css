@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Englebert&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Average+Sans&display=swap');
 :root{
-  --BACKINBLACK: #16131F;
-  --MOOUNTAINHEATHER: #F0D9E4;
-  --DECANTING: #C1A0A3;
-  --FUNKIEFRIDAY: #4A3F4B;
-  --MOONSCAPE: #806C79;
+  --MOOUNTAINHEATHER: #CCCBE1;
+  --DECANTING: #B7C0DF;
+  --FUNKIEFRIDAY: #AEADCA;
+  --MOONSCAPE: #9F9CB6;
+  --BACKINBLACK: #847EA6;
 }
 *{
   box-sizing: border-box;
