@@ -1,7 +1,8 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import Book from "./Book.jsx";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Link } from "react-router-dom";
+import Interested from "./interested.jsx";
 function App() {
   const navigate = useNavigate();
   const [books, setBooks] = useState([]);
@@ -11,6 +12,9 @@ function App() {
   const [storyText, setstoryText]= useState("");
   const [loadingBook, setloadingBook]= useState(false);
   const [interestedBooks, setInterestedBooks] = useState([]);
+  useEffect(() => {
+  console.log("Hearted book IDs:", interestedBooks);
+}, [interestedBooks]);
   useEffect(() => {
     async function getbooks() {
       fetch("https://archive.org/advancedsearch.php?q=title%3A%22Moby%20Dick%22&output=json")
@@ -78,7 +82,7 @@ return (
         <div className="appsiee">
           <aside className="sidebar">
             <nav className="navigationbar">
-              <a href="/home" className="sidebarlinkyy">
+              <a href="/" className="sidebarlinkyy">
                 <span className="sidebarsymbol">合</span>
                 <span className="labels">Home</span>
               </a>
@@ -86,10 +90,10 @@ return (
                 <span className="sidebarsymbol">♟</span>
                 <span className="labels">Reading...</span>
               </a>
-              <a href="/interested" className="sidebarlinkyy">
+              <Link to="/interested" className="sidebarlinkyy">
                 <span className="sidebarsymbol">♡</span>
                 <span className="labels">Interested in...</span>
-              </a>
+              </Link>
               <a href="/finished" className="sidebarlinkyy">
                 <span className="sidebarsymbol">✓</span>
                 <span className="labels">Finished</span>
@@ -158,10 +162,21 @@ return (
             }}
           />
         ) : (
-          <p>Please go back and pick a book again..</p>
+          <p>read some books~</p>
         )
       }
     />
-  </Routes>
+    <Route path="/interested" element={
+        <Interested
+          books={books}
+          interestedBooks={interestedBooks}
+          toggleInterested={toggleInterested}
+          readBooks={readBooks}
+          navigate={navigate}
+        />
+      }
+    />
+    </Routes>
+
 )};
 export default App;
