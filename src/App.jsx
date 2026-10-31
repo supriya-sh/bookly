@@ -12,6 +12,7 @@ function App() {
   const [storyText, setstoryText]= useState("");
   const [loadingBook, setloadingBook]= useState(false);
   const [interestedBooks, setInterestedBooks] = useState([]);
+  const [readingList, setReadingList] = useState([]);
   useEffect(() => {
   console.log("Hearted book IDs:", interestedBooks);
 }, [interestedBooks]);
@@ -72,9 +73,15 @@ async function readBooks(book) {
     setInterestedBooks((previousBooks) =>
       previousBooks.includes(bookId)
         ? previousBooks.filter((id) => id !== bookId) : [...previousBooks, bookId]
-    );
+  );}
+  function toggleReading(bookId) {
+  setReadingList((previousBooks) =>
+    previousBooks.includes(bookId)
+      ? previousBooks.filter((id) => id !== bookId)
+      : [...previousBooks, bookId]
+  );
 }
-return (
+ return (
   <Routes>
     <Route
       path="/"
@@ -137,7 +144,12 @@ return (
                           {book.summaries?.[0] || " "}
                         </p>
                         <button
-                          className="readinghere" onClick={() => {readBooks(book); navigate("/reader");}}>
+                          className="readinghere" 
+                          onClick={() => 
+                            {readBooks(book); 
+                            toggleReading(book.id); 
+                            navigate("/reader");}
+                            }>
                           <u>Read here</u>
                         </button>
                       </div>
