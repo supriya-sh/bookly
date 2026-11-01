@@ -1,9 +1,10 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import Book from "./Book.jsx";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import Interested from "./interested.jsx";
+import Book from "./Book.jsx";
 import Finished from "./finished.jsx";
+import Reading from "./reading.jsx";
 function App() {
   const navigate = useNavigate();
   const [books, setBooks] = useState([]);
@@ -81,6 +82,10 @@ async function readBooks(book) {
       lastBooks.includes(bookId) 
         ? lastBooks.filter((id) => id !== bookId) : [...lastBooks, bookId] 
 );}
+  function togglereadingList(bookId){
+    setReadingList((endBooks)=> 
+      [...endBooks, bookId]
+  );}
 return (
   <div className="appsiee">
     <aside className="sidebar">
@@ -168,17 +173,16 @@ return (
                         <p className="booksummaryy">
                           {book.summaries?.[0] || " "}
                         </p>
-
                         <button
-                          className="readinghere"
-                          onClick={() => {
-                            readBooks(book);
-                            toggleReading(book.id);
-                            navigate("/reader");
-                          }}
-                        >
-                          <u>Read here</u>
-                        </button>
+                        className="readinghere"
+                        onClick={() => {
+                          readBooks(book);
+                          navigate("/reader");
+                          togglereadingList(book.id);
+                        }}
+                      >
+                        <u>Read here</u>
+                      </button>
                       </div>
                     </article>
                   ))}
@@ -218,6 +222,26 @@ return (
             />
           ) : (
             <p>read some books~</p>
+          )
+        }
+      />
+      <Route
+        path="/reading"
+        element={
+          readingList.length>0 ? (
+          <Reading
+              books={books}
+              finishedBooks={finishedBooks}
+              toggleFinished={toggleFinished}
+              interestedBooks={interestedBooks}
+              toggleInterested={toggleInterested}
+              readBooks={readBooks}
+              navigate={navigate}
+              togglereadingList={togglereadingList}
+              readingList= {readingList}
+          />
+          ):(
+            <p>read some books~!</p>
           )
         }
       />

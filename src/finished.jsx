@@ -12,7 +12,7 @@ function Finished({
         finishedBooks.includes(book.id)
     )
     return(
-        <div className="appsiee">
+      <div className="appsiee">
       <main className="mainapp">
         <header className="header">Completed☆☆☆</header>
         <section className="backgroundbookie">
@@ -55,7 +55,9 @@ function Finished({
                         </button>
                         <button
                           type="button"
-                          className={"checkedbutt checked"}
+                          className={`checkedbutt ${
+                              finishedBooks.includes(book.id) ? "checked" : ""
+                            }`}
                           onClick={()=>toggleFinished(book.id)}
                         >
                         </button>
