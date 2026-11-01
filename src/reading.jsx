@@ -14,9 +14,9 @@ function Reading({
         readingList.includes(book.id)
     );
     return(
-      <div className="appsiee">
+        <div className="appsiee">
       <main className="mainapp">
-        <header className="header">reading₊˚⊹</header>
+        <header className="header">Interested in...</header>
         <section className="backgroundbookie">
           {readBok.length === 0 ? (
             <p className="status">

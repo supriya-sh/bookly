@@ -371,3 +371,12 @@ body{
   justify-content: center;
   padding: 0%;
 }
+@media (prefers-color-scheme: dark){
+:root{
+  --MOOUNTAINHEATHER: #b7b4ae;
+  --DECANTING: #726e68;
+  --FUNKIEFRIDAY: #33312f;
+  --MOONSCAPE: #371e1e;
+  --BACKINBLACK: #0a0a0a;
+}
+}
