@@ -345,3 +345,29 @@ body{
   padding: 30px;
   gap: 2%;
 }
+.checkedbutt {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+}
+.checkedbutt::before{
+  content: "⚪";
+  transition: transform 0.4s ease;
+}
+.checkedbutt:hover::before{
+  transform: scale(1.5);
+}
+.checkedbutt.checked::before{
+  content: "🟢";
+}
+.twobuttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 3%;
+  flex-wrap: nowrap;
+  justify-content: center;
+  padding: 0%;
+}

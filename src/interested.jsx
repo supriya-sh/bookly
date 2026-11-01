@@ -34,13 +34,23 @@ function Interested({
                     )}
                     <div className="detailings">
                       <h3 className="titles">{book.title}</h3>
-                      <button
-                        type="button"
-                        className="heartbutt hearted"
-                        onClick={() => toggleInterested(book.id)}
-                      >
-                        ♥
-                      </button>
+                      <div className="twobuttons">
+                        <button
+                          type="button"
+                          className={"heartbutt hearted"}
+                          onClick={() => toggleInterested(book.id)}
+                        >
+                          {interestedBooks.includes(book.id) ? "♥" : "♡"}
+                        </button>
+                        <button
+                          type="button"
+                          className={`checkedbutt ${
+                              finishedBooks.includes(book.id) ? "checked" : ""
+                            }`}
+                          onClick={()=>toggleFinished(book.id)}
+                        >
+                        </button>
+                      </div>
                       <p className="booksummaryy">
                         {book.summaries?.[0] || " "}
                       </p>

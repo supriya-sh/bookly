@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Book from "./Book.jsx";
 import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import Interested from "./interested.jsx";
+import Finished from "./finished.jsx";
 function App() {
   const navigate = useNavigate();
   const [books, setBooks] = useState([]);
@@ -13,7 +14,7 @@ function App() {
   const [loadingBook, setloadingBook]= useState(false);
   const [interestedBooks, setInterestedBooks] = useState([]);
   const [readingList, setReadingList] = useState([]);
-  const[completedBooks, setcompletedBooks]= useState([]);
+  const[finishedBooks, setfinishedBooks]= useState([]);
   useEffect(() => {
   console.log("Hearted book IDs:", interestedBooks);
 }, [interestedBooks]);
@@ -75,13 +76,11 @@ async function readBooks(book) {
       previousBooks.includes(bookId)
         ? previousBooks.filter((id) => id !== bookId) : [...previousBooks, bookId]
   );}
-  function toggleReading(bookId) {
-  setReadingList((previousBooks) =>
-    previousBooks.includes(bookId)
-      ? previousBooks.filter((id) => id !== bookId)
-      : [...previousBooks, bookId]
-  );
-}
+  function toggleFinished(bookId){
+    setfinishedBooks((lastBooks) =>
+      lastBooks.includes(bookId) 
+        ? lastBooks.filter((id) => id !== bookId) : [...lastBooks, bookId] 
+);}
 return (
   <div className="appsiee">
     <aside className="sidebar">
@@ -138,10 +137,9 @@ return (
                           No cover available
                         </div>
                       )}
-
                       <div className="detailings">
                         <h3 className="titles">{book.title}</h3>
-
+                      <div className="twobuttons">
                         <button
                           type="button"
                           className={`heartbutt ${
@@ -158,7 +156,15 @@ return (
                         >
                           {interestedBooks.includes(book.id) ? "♥" : "♡"}
                         </button>
-
+                        <button
+                          type="button"
+                          className={`checkedbutt ${
+                              finishedBooks.includes(book.id) ? "checked" : ""
+                            }`}
+                          onClick={()=>toggleFinished(book.id)}
+                        >
+                        </button>
+                      </div>
                         <p className="booksummaryy">
                           {book.summaries?.[0] || " "}
                         </p>
@@ -187,15 +193,16 @@ return (
         path="/interested"
         element={
           <Interested
-            books={books}
-            interestedBooks={interestedBooks}
-            toggleInterested={toggleInterested}
-            readBooks={readBooks}
-            navigate={navigate}
+              books={books}
+              finishedBooks={finishedBooks}
+              toggleFinished={toggleFinished}
+              interestedBooks={interestedBooks}
+              toggleInterested={toggleInterested}
+              readBooks={readBooks}
+              navigate={navigate}
           />
         }
       />
-
       <Route
         path="/reader"
         element={
@@ -214,7 +221,24 @@ return (
           )
         }
       />
+      <Route path="/finished"
+        element={
+          finishedBooks.length > 0 ? (
+            <Finished
+              books={books}
+              finishedBooks={finishedBooks}
+              toggleFinished={toggleFinished}
+              interestedBooks={interestedBooks}
+              toggleInterested={toggleInterested}
+              readBooks={readBooks}
+              navigate={navigate}
+            />
+      ):(
+        <p> mark some books as finished~ </p>
+      )}
+      />
     </Routes>
+
   </div>
 )};
 export default App;
