@@ -3,6 +3,8 @@ function Interested({
   books,
   interestedBooks,
   toggleInterested,
+  finishedBooks,
+  toggleFinished,
   readBooks,
   navigate,
 }) {
