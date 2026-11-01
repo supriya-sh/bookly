@@ -13,6 +13,7 @@ function App() {
   const [loadingBook, setloadingBook]= useState(false);
   const [interestedBooks, setInterestedBooks] = useState([]);
   const [readingList, setReadingList] = useState([]);
+  const[completedBooks, setcompletedBooks]= useState([]);
   useEffect(() => {
   console.log("Hearted book IDs:", interestedBooks);
 }, [interestedBooks]);
@@ -81,40 +82,48 @@ async function readBooks(book) {
       : [...previousBooks, bookId]
   );
 }
- return (
-  <Routes>
-    <Route
-      path="/"
-      element={
-        <div className="appsiee">
-          <aside className="sidebar">
-            <nav className="navigationbar">
-              <a href="/" className="sidebarlinkyy">
-                <span className="sidebarsymbol">合</span>
-                <span className="labels">Home</span>
-              </a>
-              <a href="/reading" className="sidebarlinkyy">
-                <span className="sidebarsymbol">♟</span>
-                <span className="labels">Reading...</span>
-              </a>
-              <Link to="/interested" className="sidebarlinkyy">
-                <span className="sidebarsymbol">♡</span>
-                <span className="labels">Interested in...</span>
-              </Link>
-              <a href="/finished" className="sidebarlinkyy">
-                <span className="sidebarsymbol">✓</span>
-                <span className="labels">Finished</span>
-              </a>
-            </nav>
-          </aside>
+return (
+  <div className="appsiee">
+    <aside className="sidebar">
+      <nav className="navigationbar">
+        <Link to="/" className="sidebarlinkyy">
+          <span className="sidebarsymbol">合</span>
+          <span className="labels">Home</span>
+        </Link>
+
+        <Link to="/reading" className="sidebarlinkyy">
+          <span className="sidebarsymbol">♟</span>
+          <span className="labels">Reading...</span>
+        </Link>
+
+        <Link to="/interested" className="sidebarlinkyy">
+          <span className="sidebarsymbol">♡</span>
+          <span className="labels">Interested in...</span>
+        </Link>
+
+        <Link to="/finished" className="sidebarlinkyy">
+          <span className="sidebarsymbol">✓</span>
+          <span className="labels">Finished</span>
+        </Link>
+      </nav>
+    </aside>
+
+    <Routes>
+      <Route
+        path="/"
+        element={
           <main className="mainapp" id="home">
             <header className="header">Bookly</header>
+
             <h3 className="comps">supriya enterprises 2026 ♡</h3>
+
             <section className="backgroundbookie">
               {loading && (
                 <p className="status">books incoming ~</p>
               )}
+
               {err && <p className="status">{err}</p>}
+
               {!loading && !err && books.length > 0 && (
                 <div className="booklists">
                   {books.map((book) => (
@@ -129,9 +138,18 @@ async function readBooks(book) {
                           No cover available
                         </div>
                       )}
+
                       <div className="detailings">
                         <h3 className="titles">{book.title}</h3>
-                        <button type="button" className={`heartbutt ${interestedBooks.includes(book.id) ? "hearted" : ""}`} onClick={() => toggleInterested(book.id)}
+
+                        <button
+                          type="button"
+                          className={`heartbutt ${
+                            interestedBooks.includes(book.id)
+                              ? "hearted"
+                              : ""
+                          }`}
+                          onClick={() => toggleInterested(book.id)}
                           aria-label={
                             interestedBooks.includes(book.id)
                               ? "Remove from interested books"
@@ -140,16 +158,19 @@ async function readBooks(book) {
                         >
                           {interestedBooks.includes(book.id) ? "♥" : "♡"}
                         </button>
+
                         <p className="booksummaryy">
                           {book.summaries?.[0] || " "}
                         </p>
+
                         <button
-                          className="readinghere" 
-                          onClick={() => 
-                            {readBooks(book); 
-                            toggleReading(book.id); 
-                            navigate("/reader");}
-                            }>
+                          className="readinghere"
+                          onClick={() => {
+                            readBooks(book);
+                            toggleReading(book.id);
+                            navigate("/reader");
+                          }}
+                        >
                           <u>Read here</u>
                         </button>
                       </div>
@@ -159,36 +180,41 @@ async function readBooks(book) {
               )}
             </section>
           </main>
-        </div>
-      }
-    />
-    <Route path="/reader" element={readingBooks ? 
-    (
-          <Book
-            readingBooks={readingBooks}
-            loadingBook={loadingBook}
-            storyText={storyText}
-            onBack={() => {
-              setreadingBooks(null);
-              navigate("/");
-            }}
-          />
-        ) : (
-          <p>read some books~</p>
-        )
-      }
-    />
-    <Route path="/interested" element={
-        <Interested
-          books={books}
-          interestedBooks={interestedBooks}
-          toggleInterested={toggleInterested}
-          readBooks={readBooks}
-          navigate={navigate}
-        />
-      }
-    />
-    </Routes>
+        }
+      />
 
+      <Route
+        path="/interested"
+        element={
+          <Interested
+            books={books}
+            interestedBooks={interestedBooks}
+            toggleInterested={toggleInterested}
+            readBooks={readBooks}
+            navigate={navigate}
+          />
+        }
+      />
+
+      <Route
+        path="/reader"
+        element={
+          readingBooks ? (
+            <Book
+              readingBooks={readingBooks}
+              loadingBook={loadingBook}
+              storyText={storyText}
+              onBack={() => {
+                setreadingBooks(null);
+                navigate("/");
+              }}
+            />
+          ) : (
+            <p>read some books~</p>
+          )
+        }
+      />
+    </Routes>
+  </div>
 )};
 export default App;

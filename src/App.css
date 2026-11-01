@@ -2,11 +2,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Englebert&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Average+Sans&display=swap');
 :root{
-  --MOOUNTAINHEATHER: #CCCBE1;
-  --DECANTING: #B7C0DF;
-  --FUNKIEFRIDAY: #AEADCA;
-  --MOONSCAPE: #9F9CB6;
-  --BACKINBLACK: #847EA6;
+  --MOOUNTAINHEATHER: #f6eedc;
+  --DECANTING: #e8d785;
+  --FUNKIEFRIDAY: #d2b4bc;
+  --MOONSCAPE: #d3b899;
+  --BACKINBLACK: #d4b58e;
 }
 *{
   box-sizing: border-box;
@@ -147,7 +147,7 @@ body{
   flex-wrap: wrap;
   margin: 0 0 35px;
   padding: 0 15px;
-  color: var(--BACKINBLACK);
+  color: #1B365D;
   font-size: 22px;
 }
 .backgroundbookie{
@@ -338,4 +338,10 @@ body{
 }
 .heartbutt.hearted{
   color: #62222e;
+}
+.booklists.updated{
+  animation: none;
+  width: 100%;
+  padding: 30px;
+  gap: 2%;
 }
