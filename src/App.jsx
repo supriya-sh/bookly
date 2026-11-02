@@ -16,6 +16,7 @@ function App() {
   const [interestedBooks, setInterestedBooks] = useState([]);
   const [readingList, setReadingList] = useState([]);
   const[finishedBooks, setfinishedBooks]= useState([]);
+  const [searchBook, setsearchBook]= useState("");
   useEffect(() => {
   console.log("Hearted book IDs:", interestedBooks);
 }, [interestedBooks]);
@@ -117,10 +118,11 @@ return (
         path="/"
         element={
           <main className="mainapp" id="home">
-            <header className="header">Bookly</header>
-
+            <div className="topelements">
+              <header className="header">Bookly</header>
+              <input type="text" placeholder="search a book ⋆. 𐙚 ˚" className="searchbar"></input>
+            </div>
             <h3 className="comps">supriya enterprises 2026 ♡</h3>
-
             <section className="backgroundbookie">
               {loading && (
                 <p className="status">books incoming ~</p>

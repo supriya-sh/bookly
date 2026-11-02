@@ -380,3 +380,7 @@ body{
   --BACKINBLACK: #0a0a0a;
 }
 }
+.searchbar{
+  background-color: var(--MOOUNTAINHEATHER);
+  align-items: center;
+}
