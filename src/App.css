@@ -157,7 +157,8 @@ body{
   flex-wrap: wrap;
   margin: 0 0 35px;
   padding: 0 15px;
-  color: #1B365D;
+  color: var(--MOOUNTAINHEATHER);
+  background-color: var(--MOONSCAPE);
   font-size: 22px;
 }
 .backgroundbookie{
