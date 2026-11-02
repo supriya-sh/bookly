@@ -117,6 +117,9 @@ body{
   -webkit-text-stroke-color: black;
   color: white;
   transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .header:hover{
   cursor: pointer;
@@ -380,7 +383,19 @@ body{
   --BACKINBLACK: #0a0a0a;
 }
 }
-.searchbar{
+.header .searchbar {
   background-color: var(--MOOUNTAINHEATHER);
-  align-items: center;
+  border-radius: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  right: 0;
+  width: 30%;
+  min-height: 3em;
+  -webkit-text-stroke: 0px;
+}
+.header .searchbar::placeholder {
+  font: 300 14px 'Times New Roman', serif !important;
+  padding: 3%;
 }

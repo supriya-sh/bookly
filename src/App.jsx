@@ -118,10 +118,9 @@ return (
         path="/"
         element={
           <main className="mainapp" id="home">
-            <div className="topelements">
-              <header className="header">Bookly</header>
+              <header className="header">Bookly
               <input type="text" placeholder="search a book ⋆. 𐙚 ˚" className="searchbar"></input>
-            </div>
+            </header>
             <h3 className="comps">supriya enterprises 2026 ♡</h3>
             <section className="backgroundbookie">
               {loading && (
