@@ -17,6 +17,7 @@ function App() {
   const [readingList, setReadingList] = useState([]);
   const[finishedBooks, setfinishedBooks]= useState([]);
   const [searchElement, setsearchElement]= useState("");
+  const [darkMode, setdarkMode]= useState(false);
   const searchBook= searchElement === "" ? books :
     books.filter((book)=>
     book.title.toLowerCase().includes(searchElement.toLowerCase())
@@ -91,8 +92,11 @@ async function readBooks(book) {
     setReadingList((endBooks)=> 
       [...endBooks, bookId]
   );}
+  function toggleDarkMode(){
+    setdarkMode(!darkMode);
+  }
 return (
-  <div className="appsiee">
+  <div className={darkMode ? "appsiee dark" : "appsiee"}>
     <aside className="sidebar">
       <nav className="navigationbar">
         <Link to="/" className="sidebarlinkyy">
@@ -123,6 +127,11 @@ return (
         element={
           <main className="mainapp" id="home">
               <header className="header">Bookly
+              <button
+                type="button"
+                className={`themebutton ${darkMode ? "dark" : "light"}`}
+                onClick={()=> toggleDarkMode()}
+                ></button>
               <input type="text" placeholder="search a book ⋆. 𐙚 ˚" className="searchbar" value={searchElement} onChange={(event)=>setsearchElement(event.target.value)}></input>
             </header>
             <h3 className="comps">supriya enterprises 2026 ♡</h3>
