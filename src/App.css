@@ -23,12 +23,6 @@ body{
   width: 100%;
   min-height: 100vh;
   overflow-x: hidden;
-  background: radial-gradient(
-    circle,
-    var(--MOOUNTAINHEATHER),
-    var(--DECANTING),
-    var(--MOONSCAPE)
-  );
   font-family: "Oswald", sans-serif;
 }
 .appsiee{
@@ -36,6 +30,12 @@ body{
   width: 100%;
   min-height: 100vh;
   align-items: flex-start;
+  background: radial-gradient(
+    circle,
+    var(--MOOUNTAINHEATHER),
+    var(--DECANTING),
+    var(--MOONSCAPE)
+  );
 }
 .sidebar{
   position: sticky;
