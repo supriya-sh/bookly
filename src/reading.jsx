@@ -16,7 +16,7 @@ function Reading({
     return(
         <div className="appsiee">
       <main className="mainapp">
-        <header className="header">Interested in...</header>
+        <header className="header">Currently Reading...</header>
         <section className="backgroundbookie">
           {readBok.length === 0 ? (
             <p className="status">
