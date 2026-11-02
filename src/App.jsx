@@ -16,7 +16,11 @@ function App() {
   const [interestedBooks, setInterestedBooks] = useState([]);
   const [readingList, setReadingList] = useState([]);
   const[finishedBooks, setfinishedBooks]= useState([]);
-  const [searchBook, setsearchBook]= useState("");
+  const [searchElement, setsearchElement]= useState("");
+  const searchBook= searchElement === "" ? books :
+    books.filter((book)=>
+    book.title.toLowerCase().includes(searchElement.toLowerCase())
+  );
   useEffect(() => {
   console.log("Hearted book IDs:", interestedBooks);
 }, [interestedBooks]);
@@ -119,19 +123,20 @@ return (
         element={
           <main className="mainapp" id="home">
               <header className="header">Bookly
-              <input type="text" placeholder="search a book ⋆. 𐙚 ˚" className="searchbar"></input>
+              <input type="text" placeholder="search a book ⋆. 𐙚 ˚" className="searchbar" value={searchElement} onChange={(event)=>setsearchElement(event.target.value)}></input>
             </header>
             <h3 className="comps">supriya enterprises 2026 ♡</h3>
             <section className="backgroundbookie">
               {loading && (
                 <p className="status">books incoming ~</p>
               )}
-
               {err && <p className="status">{err}</p>}
-
               {!loading && !err && books.length > 0 && (
                 <div className="booklists">
-                  {books.map((book) => (
+                  {searchBook.length === 0 ? (
+                    <p>No books found</p>
+                  ) : (
+                    searchBook.map((book) => (
                     <article className="rowflow" key={book.key}>
                       {book.formats?.["image/jpeg"] ? (
                         <img
@@ -186,13 +191,15 @@ return (
                       </button>
                       </div>
                     </article>
-                  ))}
+                  ))
+                  )}
                 </div>
               )}
             </section>
           </main>
         }
       />
+      
 
       <Route
         path="/interested"
